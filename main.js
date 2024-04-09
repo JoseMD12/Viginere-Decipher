@@ -40,14 +40,13 @@ async function main() {
 
     //> Decifra o texto
     const textoDecifrado = decifrar(cifra, chave);
-    fs.writeFile(
-        "./decifrado/" + caminho.split("/")[2],
-        textoDecifrado,
-        (err) => {
-            if (err) throw err;
-            console.log("Arquivo criado com sucesso.");
-        }
-    );
+    const nomeArquivo = caminho.split("/")[2];
+    fs.writeFile("./decifrado/" + nomeArquivo, textoDecifrado, (err) => {
+        if (err) throw err;
+        console.log(
+            "Arquivo " + nomeArquivo + " criado com sucesso em ./decifrado."
+        );
+    });
 }
 
 main();
