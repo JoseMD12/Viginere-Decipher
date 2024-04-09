@@ -68,8 +68,8 @@ export function frequenciaCaracter(texto, ic, isLinguaPortuguesa) {
         frequenciaCaracteres[letra] = n;
     }
 
-    let minQui2 = Infinity;
     let menorQuiQuadrado = Infinity;
+    let quiQuadradoDict = {};
     let letraChave = "";
 
     for (let i = alfabeto.length - 1; i >= 0; i--) {
@@ -86,12 +86,13 @@ export function frequenciaCaracter(texto, ic, isLinguaPortuguesa) {
                     frequenciaEsperada;
             }
         }
-        if (quiQuadrado < minQui2) {
-            minQui2 = quiQuadrado;
-            letraChave = alfabeto[i];
-        }
-        if (quiQuadrado < menorQuiQuadrado) {
-            menorQuiQuadrado = quiQuadrado;
+        quiQuadradoDict[alfabeto[i]] = quiQuadrado;
+    }
+
+    for (let [key, valor] of Object.entries(quiQuadradoDict)) {
+        if (valor < menorQuiQuadrado) {
+            menorQuiQuadrado = valor;
+            letraChave = key;
         }
     }
 

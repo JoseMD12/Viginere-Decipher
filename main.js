@@ -15,11 +15,9 @@ async function main() {
     //> Lê o arquivo cifrado
     const cifra = await lerArquivo(caminho);
 
-    //> Lê os arquivos de texto em português e inglês e calcula o IC de cada um
-    const pt = await lerArquivo("./texto/pt.txt");
-    const en = await lerArquivo("./texto/en.txt");
-    const ptIC = getIC(pt);
-    const enIC = getIC(en);
+    //> Define o índice de coincidência para o português e inglês
+    let ptIC = 0.07461538461538461;
+    let enIC = 0.06653846153846153;
     console.log("IC Português:", ptIC);
     console.log("IC Inglês:", enIC);
 
