@@ -1,6 +1,7 @@
 import { lerArquivo } from "./ler-arquivo.js";
 import { getIC } from "./indice-coincidencia.js";
 import { getChave } from "./get-chave.js";
+import { decifrarChave } from "./decifrar-chave.js";
 
 async function main() {
     const caminho = process.argv[2];
@@ -24,7 +25,14 @@ async function main() {
     console.log("Melhor tamanho de chave: ", melhorChaveELingua.tamanhoChave);
     console.log(
         "Língua: ",
-        melhorChaveELingua.linguaPortuguesa ? "Português" : "Inglês"
+        melhorChaveELingua.isLinguaPortuguesa ? "Português" : "Inglês"
+    );
+
+    decifrarChave(
+        cifra,
+        melhorChaveELingua.tamanhoChave,
+        melhorChaveELingua.isLinguaPortuguesa ? ptIC : enIC,
+        melhorChaveELingua.isLinguaPortuguesa
     );
 }
 

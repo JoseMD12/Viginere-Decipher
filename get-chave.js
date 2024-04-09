@@ -3,7 +3,7 @@ import { getIC } from "./indice-coincidencia.js";
 export function getChave(data, ptIC, enIC) {
     var melhorDiffIC = 1;
     var melhorTamanhoChave = 0;
-    var linguaPortuguesa = true;
+    var isLinguaPortuguesa = true;
 
     for (let i = 1; i < 20; i++) {
         let input = "";
@@ -18,13 +18,13 @@ export function getChave(data, ptIC, enIC) {
         if (diffEn < melhorDiffIC) {
             melhorDiffIC = diffEn;
             melhorTamanhoChave = i;
-            linguaPortuguesa = false;
+            isLinguaPortuguesa = false;
         } else if (diffPt < melhorDiffIC) {
             melhorDiffIC = diffPt;
             melhorTamanhoChave = i;
-            linguaPortuguesa = true;
+            isLinguaPortuguesa = true;
         }
     }
 
-    return { tamanhoChave: melhorTamanhoChave, linguaPortuguesa };
+    return { tamanhoChave: melhorTamanhoChave, isLinguaPortuguesa };
 }
